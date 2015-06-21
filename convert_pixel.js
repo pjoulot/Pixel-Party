@@ -7,7 +7,7 @@
 	var json=document.getElementById("result_json");
 	json.value = image_to_json(img);
 	
-	display_reverse_image(json.value, img.width, img.height);
+	display_image(json.value, img.width, img.height, 2);
 	
 	function image_to_json(image) {
 		var json_result = '{';
@@ -47,29 +47,57 @@
 		return(json_result);
 	}
 	
-	function display_image(json_data, width, height) {
+	function display_image(json_data, width, height, orientation) {
 		var canvas=document.getElementById("canvas_result");
 		var ctx=canvas.getContext("2d");
 		var json_data_array = JSON.parse(json_data);
-		for(var i = 0; i < width; i++) {
-			for(var j = 0; j < height; j++) {
-				var transparency = json_data_array[i][j]['A'] / 255;
-				ctx.fillStyle="rgba("+json_data_array[i][j]['R']+","+json_data_array[i][j]['G']+","+json_data_array[i][j]['B']+","+transparency+")";
-				ctx.fillRect(i,j,1,1);
-			}
-		}
-	}
-	
-	function display_reverse_image(json_data, width, height) {
-		var canvas=document.getElementById("canvas_result");
-		var ctx=canvas.getContext("2d");
-		var json_data_array = JSON.parse(json_data);
-		for(var i = width-1; i > 0; i--) {
-			for(var j = 0; j < height; j++) {
-			    var transparency = json_data_array[i][j]['A'] / 255;
-				ctx.fillStyle="rgba("+json_data_array[i][j]['R']+","+json_data_array[i][j]['G']+","+json_data_array[i][j]['B']+","+transparency+")";
-				ctx.fillRect(width-1-i,j,1,1);
-			}
+		
+		switch(orientation) {
+			case 0:
+				for(var i = 0; i < width; i++) {
+					for(var j = 0; j < height; j++) {
+						var transparency = json_data_array[i][j]['A'] / 255;
+						ctx.fillStyle="rgba("+json_data_array[i][j]['R']+","+json_data_array[i][j]['G']+","+json_data_array[i][j]['B']+","+transparency+")";
+						ctx.fillRect(i,j,1,1);
+					}
+				}
+			break;
+			case 1:
+				for(var i = width-1; i > 0; i--) {
+					for(var j = 0; j < height; j++) {
+						var transparency = json_data_array[i][j]['A'] / 255;
+						ctx.fillStyle="rgba("+json_data_array[i][j]['R']+","+json_data_array[i][j]['G']+","+json_data_array[i][j]['B']+","+transparency+")";
+						ctx.fillRect(width-1-i,j,1,1);
+					}
+				}
+			break;
+			case 2:
+				for(var i = 0; i < width; i++) {
+					for(var j = height-1; j > 0; j--) {
+						var transparency = json_data_array[i][j]['A'] / 255;
+						ctx.fillStyle="rgba("+json_data_array[i][j]['R']+","+json_data_array[i][j]['G']+","+json_data_array[i][j]['B']+","+transparency+")";
+						ctx.fillRect(i,height-1-j,1,1);
+					}
+				}
+			break;
+			case 3:
+				for(var i = width-1; i > 0; i--) {
+					for(var j = height-1; j > 0; j--) {
+						var transparency = json_data_array[i][j]['A'] / 255;
+						ctx.fillStyle="rgba("+json_data_array[i][j]['R']+","+json_data_array[i][j]['G']+","+json_data_array[i][j]['B']+","+transparency+")";
+						ctx.fillRect(width-1-i,height-1-j,1,1);
+					}
+				}
+			break;
+			default:
+				for(var i = 0; i < width; i++) {
+					for(var j = 0; j < height; j++) {
+						var transparency = json_data_array[i][j]['A'] / 255;
+						ctx.fillStyle="rgba("+json_data_array[i][j]['R']+","+json_data_array[i][j]['G']+","+json_data_array[i][j]['B']+","+transparency+")";
+						ctx.fillRect(i,j,1,1);
+					}
+				}
+			break;
 		}
 	}
 };
