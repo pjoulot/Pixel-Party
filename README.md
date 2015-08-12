@@ -7,6 +7,9 @@ This program processes the image pixel by pixel to allow symmetry transformation
 
 **WARNING: These methods make hard calculations and it is not a good idea to use them at the page loading.**
 
+Install
+Add the pixel_party.js file into your html page, and call the functions below:
+
 * function image_to_json(image)
 * function display_image(image, canvas, orientation)
 * function display_image_from_json(json_data, canvas, width, height, orientation)
@@ -19,6 +22,9 @@ Pixel Party est un petit projet qui fournit quelques méthodes permettant de con
 Ce programme traite les images pixel par pixel pour permettre des transformations telles que la symétrie. La transparence des fichiers png est supportée.
 
 **ATTENTION: Ces méthodes font de lourds calculs et il n'est pas recommandé de les utiliser au chargement de la page.**
+
+Installation
+Ajouter simplement le fichier pixel_party.js dans votre page html, et appeler les fonctions à votre disposition:
 
 * function image_to_json(image)
 * function display_image(image, canvas, orientation)
