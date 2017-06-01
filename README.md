@@ -14,6 +14,8 @@ Add the pixel_party.js file into your html page, and call the functions below:
 * function display_image(image, canvas, orientation)
 * function display_image_from_json(json_data, canvas, width, height, orientation)
 
+This project should use WebAssembly to improve performances.
+
 **************************************************************************************
 
 ##Français
@@ -29,3 +31,5 @@ Ajouter simplement le fichier pixel_party.js dans votre page html, et appeler le
 * function image_to_json(image)
 * function display_image(image, canvas, orientation)
 * function display_image_from_json(json_data, canvas, width, height, orientation)
+
+Ce projet devrait utiliser Webassembly pour améliorer les performances.
